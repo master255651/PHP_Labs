@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://kit.fontawesome.com/c4aa7d1302.js" crossorigin="anonymous"></script>
+	<style>
+		* {
+		  box-sizing: border-box;
+		}
+
+		input[type=text],input[type=number] {
+		  width: 100%;
+		  padding: 12px;
+		  border: 1px solid #ccc;
+		  border-radius: 50px;
+		  resize: vertical;
+		  outline: none;
+		  color: #964700;
+		}
+
+		label {
+		  padding: 12px 12px 12px 0;
+		  display: inline-block;
+		  text-shadow: 2px 2px 8px #FF0000;
+		}
+
+		input[type=submit] {
+		  background-color: #f25e5e;
+		  color: white;
+		  padding: 12px 20px;
+		  border: none;
+		  border-radius: 15px;
+		  cursor: pointer;
+		  float: left;
+		  width: 25%;
+		  margin-left: 10%;
+		  margin-top: 15px;
+		}
+
+		input[type=reset] {
+		  background-color: #f25e5e;
+		  color: white;
+		  padding: 12px 20px;
+		  border: none;
+		  border-radius: 15px;
+		  cursor: pointer;
+		  float: left;
+		  width: 25%;
+		  margin-left: 25px;
+		  margin-top: 15px;
+		}
+
+		input[type=submit]:hover {
+		  background-color: red;
+		  border: 2px solid black;
+		}
+
+		input[type=reset]:hover {
+		  background-color: red;
+		  border: 2px solid black;
+		}
+
+		.container {
+		  border-radius: 5px;
+		  background-image: linear-gradient(to right, #f7a1a1 , #f7e9a1);
+		  padding: 20px;
+		}
+
+		.col-20 {
+		  float: left;
+		  width: 20%;
+		  margin-top: 6px;
+		}
+
+		.col-40 {
+		  float: left;
+		  width: 40%;
+		  margin-top: 6px;
+		}
+
+		.col-40:hover {
+		  float: left;
+		  width: 75%;
+		  margin-top: 6px;
+		  border: 2px dotted red;
+		  border-radius: 50px;
+		}
+
+		.col-75 {
+		  float: left;
+		  width: 75%;
+		  margin: 10px;
+		}
+
+		.row:after {
+		  content: "";
+		  display: table;
+		  clear: both;
+		}
+
+		@media screen and (max-width: 600px) {
+		  .col-25, .col-75, input[type=submit] {
+		    width: 100%;
+		    margin-top: 0;
+		  }
+		}
+
+		.thumb img  {
+		    border: 2px solid #55c5e9;
+		    padding: 15px;
+		    background: #666;
+		   }
+
+	 	fieldset:hover{
+	 		border: 3px groove black;
+	 	}
+
+	 	.icon {
+		    padding: 10px;
+		    background: #ffbc80;
+		    color: white;
+		    min-width: 35px;
+		    text-align: center;
+		}
+
+		.one {
+		  background-image: linear-gradient(to right, #f7a1a1 , #f7e9a1);
+		  padding: 10px 20px;
+		  text-align: center;
+		  
+		}
+		.one h1 {
+		  font-family: 'Righteous', cursive;
+		  position: relative;
+		  color: #9c3725; 
+		  display: inline-block;
+		  border-top: 2px solid;
+		  border-bottom: 2px solid;
+		  font-size: 3em;
+		  padding: 11px 60px;
+		  margin: 0; 
+		  line-height: 1;
+		}
+		.one h1:before, .one h1:after {
+		  content: ""; 
+		  position: absolute;
+		  top: 0;
+		  width: 30px;
+		  height: 100%;
+		  border-left: 2px solid;
+		  border-right: 2px solid;
+		  background: repeating-linear-gradient(180deg, transparent, transparent 2px, #9c3725 2px, #9c3725 4px);
+		}
+		.one h1:before {left: 0;}
+		.one h1:after {right: 0;}
+		@media (max-width: 420px) {
+		  .one h1 {font-size: 2em;}
+		}
+
+		body {
+		  background-image: linear-gradient(to right, #f7a1a1 , #f7e9a1);
+		}
+
+		form{
+			background-image: linear-gradient(to right, #f7a1a1 , #f7e9a1);
+		}
+</style>
+</head>
+<body>
+	<div class="one"><h1>Show books</h1></div>
+	<div class="container">
+
+  <form action="ShowBooksRequest.php" method="GET">
+
+  <fieldset class="col-75">
+  <legend>Select criteria</legend>
+  <div class="row">
+    <div class="col-20">
+    	<i class="fas fa-globe-africa"></i>
+      <label for="title">Title (not necessary)</label> 
+    </div>
+    <div class="col-40">
+      <input type="text" id="title" name="title" placeholder="Enter title... ">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-20">
+    	<i class="far fa-address-card"></i>
+      <label for="author">Author (not necessary)</label>
+    </div>
+    <div class="col-40">
+      <input type="text" id="author" name="author" placeholder="Enter author...">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-20">
+    	<i class="fas fa-dollar-sign"></i>
+      <label for="year">Maximum price (not necessary)</label>
+    </div>
+    <div class="col-40">
+      <input type="text" id="price" name="price" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" placeholder="Enter price..." >
+    </div>
+  </div>
+  </fieldset>
+
+  <br>
+
+  <div class="row">
+    <input type="submit" value="Select">
+    <input type="reset" value="Clear">
+	</div>
+
+  </form>
+</div>
+</body>
+</html>
